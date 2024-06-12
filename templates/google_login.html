@@ -1,0 +1,36 @@
+<!-- google_login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <!-- Include the Google Sign-In script -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Set up Google Sign-In -->
+    <script>
+        function onSignIn(googleUser) {
+            // Handle the sign-in process here
+            console.log('User signed in');
+            // You can use Google's provided functions to handle the sign-in process
+            // For example, you can get user information using googleUser.getBasicProfile()
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login with Google</h1>
+        </div>
+        <div class="content">
+            <!-- Add the Google Sign-In button here -->
+            <!--div class="g-signin2" data-onsuccess="onSignIn" data-clientid="YOUR_CLIENT_ID"></div-->
+        </div>
+        <div class="footer">
+            <p>Copyright &copy; 2024 Siventys SRL</p>
+        </div>
+    </div>
+</body>
+</html>

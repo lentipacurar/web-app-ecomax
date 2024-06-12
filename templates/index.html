@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomax</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Add your logo here -->
+            <img src="static/images/logo.png" alt="Your Logo" class="logo">
+            <h2>Bun venit la Ecomax</h2>
+        </div>
+        <div class="navbar">
+            <a href="/">Acasa</a> |
+            <!--a href="/login">Login</a-->  <!-- Add login link here -->
+            <a href="/about">Despre</a>  <!-- Upload link here -->
+        </div>
+        <div class="content">
+            </br>
+            <form id="upload-form" action="/process-upload" method="post" enctype="multipart/form-data">
+                <label for="image">Selecteaza imagine carte de identitate:</label>
+                <div class="form-group">
+                    <input type="file" name="image" id="image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Proceseaza si extrage datele cartii de identitate" class="btn">
+                </div>
+            </form>
+            <div class="spinner" id="spinner"></div>
+            <h3>Datele extrase:</h3>
+            <form id="extracted-data-form" action="/generate-docs" method="post" class="form-container" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Nume</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Prenume</label>
+                    <input type="text" id="surname" name="surname">
+                </div>
+                <div class="form-group">
+                    <label for="personal-id">CNP</label>
+                    <input type="text" id="personal-id" name="personal-id">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Data nasterii</label>
+                    <input type="text" id="dob" name="dob">
+                </div>
+                <div class="form-group">
+                    <label for="pob">Locul nasterii</label>
+                    <input type="text" id="pob" name="pob">
+                </div>
+                <div class="form-group">
+                    <label for="address">Adresa</label>
+                    <input type="text" id="address" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="document-id">Serie si nr. document</label>
+                    <input type="text" id="document-id" name="document-id">
+                </div>
+                <div class="form-group">
+                    <label for="doi">Data eliberare carte de identitate</label>
+                    <input type="text" id="doi" name="doi">
+                </div>
+                <div class="form-group">
+                    <label for="doe">Data expirare carte de identitate</label>
+                    <input type="text" id="doe" name="doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail destinatar</label>
+                    <input type="text" id="email" name="email" value="office.siventys@gmail.com"><!--contact@ecomaxprocars.ro-->
+                </div>
+                <div class="form-group">
+                    <label for="nr_auto">Nr. inmatriculare auto</label>
+                    <input type="text" id="nr_auto" name="nr_auto" value="CJ 00 ABC">
+                </div>
+                <div class="form-group">
+                    <label for="nr_contract">Nr. contract</label>
+                    <input type="text" id="nr_contract" name="nr_contract" value="123">
+                </div>
+                <div class="form-group">
+                    <label for="cuantum">Cuantum suma contract</label>
+                    <input type="text" id="cuantum" name="cuantum" value="13000">
+                </div>
+                <div class="form-group">
+                    <label for="nr_factura">Nr. factura</label>
+                    <input type="text" id="nr_factura" name="nr_factura" value="123">
+                </div>
+                <div class="form-group">
+                    <label for="data_factura">Data factura</label>
+                    <input type="text" id="data_factura" name="data_factura" type="date">
+                </div>
+                <div class="form-group">
+                    <label for="dosar_dauna">Nr. dosar dauna</label>
+                    <input type="text" id="dosar_dauna" name="dosar_dauna" value="20221560028-R">
+                </div>
+                <div class="form-group">
+                    <label for="listaAsiguratori">Asigurator</label>
+                    <select class="custom-select" id="listaAsiguratori" name="listaAsiguratori">
+                        <option value="ALLIANZ-TIRIAC ASIGURARI S.A.">ALLIANZ-TIRIAC ASIGURARI S.A.</option>
+                        <option value="AXERIA IARD S.A.">AXERIA IARD S.A.</option>
+                        <option value="EUROINS ROMANIA ASIGURARE REASIGURARE S.A." selected>EUROINS ROMANIA ASIGURARE REASIGURARE S.A.</option>
+                        <option value="EAZY ASIGURĂRI S.A.">EAZY ASIGURĂRI S.A.</option>
+                        <option value="GENERALI ROMANIA ASIGURARE REASIGURARE S.A.">GENERALI ROMANIA ASIGURARE REASIGURARE S.A.</option>
+                        <option value="GRAWE ROMANIA ASIGURARE S.A.">GRAWE ROMANIA ASIGURARE S.A.</option>
+                        <option value="GROUPAMA ASIGURARI S.A.">GROUPAMA ASIGURARI S.A.</option>
+                        <option value="HELLAS DIRECT">HELLAS DIRECT</option>
+                        <option value="OMNIASIG VIENNA INSURANCE GROUP S.A.">OMNIASIG VIENNA INSURANCE GROUP S.A.</option>
+                        <option value="UNIQA ASIGURARI S.A.">UNIQA ASIGURARI S.A.</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="listaMarciAuto">Marca auto/moto</label>
+                    <select class="custom-select" id="listaMarciAuto" name="listaMarciAuto">
+                        <option value="Alfa Romeo">Alfa Romeo</option>
+                        <option value="Aprilia">Aprilia</option>
+                        <option value="Audi">Audi</option>
+                        <option value="BMW" selected>BMW</option>
+                        <option value="BYD">BYD</option>
+                        <option value="Citroën">Citroën</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Harley-Davidson">Harley-Davidson</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Iveco">Iveco</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="Kawasaki">Kawasaki</option>
+                        <option value="Kia">Kia</option>
+                        <option value="Lancia">Lancia</option>
+                        <option value="Land Rover">Land Rover</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="Mitsubishi">Mitsubishi</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Opel">Opel</option>
+                        <option value="Peugeot">Peugeot</option>
+                        <option value="Piaggio">Piaggio</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Renault">Renault</option>
+                        <option value="Seat">Seat</option>
+                        <option value="Skoda">Skoda</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Yamaha">Yamaha</option>
+                    </select>
+                </div>
+                <div class="form-group" id="templates-list">
+                    <label>Modele documente pentru generare</label>
+                    <div id="template-checkboxes">
+                        <!-- Checkboxes will be populated here by JS -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="generate_result">Rezultatul generarii documentelor</label>
+                    <textarea type="text" id="generate_result" name="generate_result" value="" readonly ></textarea>
+                </div>
+                <div class="spinner" id="spinner2"></div>
+                <div class="form-group btn-group">
+                    <input type="submit" value="Genereaza si trimite documentele prin email" class="btn">
+                </div>
+            </form>
+            </br>
+        </div>
+        <div class="footer">
+            <p>Copyright &copy; 2024 Siventys SRL</p>
+        </div>
+    </div>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
