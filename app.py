@@ -21,7 +21,7 @@ import smtplib
 from email.message import EmailMessage
 
 app = Flask(__name__)
-app.secret_key = 'Laur390Lumata'  # Change this to a secret key
+app.secret_key = 'Laurentiu'  # Change this to a secret key
 login_manager = LoginManager()
 login_manager.init_app(app)
 
