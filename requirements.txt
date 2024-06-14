@@ -1,10 +1,9 @@
 flask
 flask_login
 requests
-requests.auth
-azure.core.credentials
-azure.ai.formrecognizer
-azure.keyvault.secrets
-azure.identity
-docx
+azure-core
+azure-ai-formrecognizer
+azure-keyvault-secrets
+azure-identity
+python-docx
 docxtpl
