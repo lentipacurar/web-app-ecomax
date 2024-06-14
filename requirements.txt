@@ -1,9 +1,5 @@
 flask
 flask_login
-email.message
-os
-json
-base64
 requests
 requests.auth
 azure.core.credentials
