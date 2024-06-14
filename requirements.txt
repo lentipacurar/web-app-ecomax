@@ -1,6 +1,5 @@
 flask
 flask_login
-smtplib
 email.message
 os
 json
