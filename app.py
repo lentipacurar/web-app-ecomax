@@ -16,9 +16,6 @@ from azure.identity import DefaultAzureCredential
 
 from docx import Document
 from docxtpl import DocxTemplate
-from io import BytesIO
-import smtplib
-from email.message import EmailMessage
 
 app = Flask(__name__)
 app.secret_key = 'Laurentiu'  # Change this to a secret key
