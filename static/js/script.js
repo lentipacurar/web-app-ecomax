@@ -172,13 +172,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(formCUI);
         const cui = formData.get('cui');
         
+        spinner.style.display = 'block';
+
         fetch('/process-cui', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
-            spinner.style.display = 'block';
             if (data.error) {
                 alert('Error: ' + data.error);
             } else {
@@ -187,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
             spinner.style.display = 'none';
         })
         .catch(error => {
+            spinner.style.display = 'none';
             alert('Error: ' + data.error);
         });
     });
@@ -194,9 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function fillDataFormCUI(data) {
         document.getElementById('name').value = data.denumire || '';
         document.getElementById('lbl-name').innerText  = 'Denumire';
-        document.getElementById('surname').value = data.cod_postal || '';
-        document.getElementById('lbl-surname').innerText = 'Cod postal';
-        document.getElementById('address').value = data.adresa || '';
+        document.getElementById('surname').value = 'SRL';
+        document.getElementById('lbl-surname').innerText = '';
+        document.getElementById('address').value = data.adresa + ', ' + data.cod_postal || '';
         document.getElementById('personal-id').value = data.cif || '';
         document.getElementById('lbl-personal-id').innerText = 'CUI';
         document.getElementById('document-id').value = data.numar_reg_com || '';
