@@ -31,6 +31,16 @@
                 </div>
             </form>
             <div class="spinner" id="spinner"></div>
+            <form id="cui-form" action="/process-cui" method="post" enctype="multipart/form-data">
+                <label for="image">Introdu CUI:</label>
+                <div class="form-group">
+                    <input type="text" name="cui" id="cui" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Proceseaza si extrage datele pe baza CUI-ului" class="btn">
+                </div>
+            </form>
+            <div id="response-container"></div>
             <h3>Datele extrase:</h3>
             <form id="extracted-data-form" action="/generate-docs" method="post" class="form-container" enctype="multipart/form-data">
                 <div class="form-group">

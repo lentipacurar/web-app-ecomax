@@ -156,4 +156,41 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('generate_result').value = 'Error: ' + error.message;
         });
     });
+
+    const formCUI = document.getElementById('cui-form');
+    formCUI.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(formCUI);
+        const cui = formData.get('cui');
+        
+        fetch('/process-cui', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            spinner.style.display = 'block';
+            if (data.error) {
+                alert('Error: ' + data.error);
+            } else {
+                fillDataFormCUI(data);
+            }
+            spinner.style.display = 'none';
+        })
+        .catch(error => {
+            alert('Error: ' + data.error);
+        });
+    });
+
+    function fillDataFormCUI(data) {
+        document.getElementById('name').value = data.denumire || '';
+        document.getElementById('surname').value = data.cod_postal || '';
+        document.getElementById('address').value = data.adresa || '';
+        document.getElementById('personal-id').value = data.cif || '';
+        document.getElementById('document-id').value = data.numar_reg_com || '';
+        document.getElementById('dob').value = data.stare || '';
+        document.getElementById('pob').value = data.judet || '';
+        document.getElementById('doi').value = data.ultima_declaratie || '';
+        document.getElementById('doe').value = data.ultima_prelucrare || '';
+    }
 });

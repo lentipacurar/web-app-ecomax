@@ -153,6 +153,27 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+# Endpoint to process the CUI and call an external API
+@app.route('/process-cui', methods=['POST'])
+def process_cui():
+    try:
+        # Get the CUI from the form
+        cui = request.form['cui']
+        
+        # Call the external API with the CUI (replace with the actual API URL)
+        api_url = f"https://api.openapi.ro/v1/companies/{cui}"
+        headers = {'x-api-key': 'G9GwyMnv2Z5b2KL9xEyDCaYRzW9z5qAvZbkE3HEKY1gg9s53kQ'}
+        response = requests.get(api_url, headers=headers)
+        
+        # Check if the response is successful
+        if response.status_code == 200:
+            data = response.json()
+            return jsonify(data), 200
+        else:
+            return jsonify({'error': 'Failed to retrieve data from external API'}), response.status_code
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 def extract_id_data(formUrl):
     result = {}
     document_analysis_client = DocumentAnalysisClient(
