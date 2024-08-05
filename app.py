@@ -57,7 +57,9 @@ except Exception as e:
 secret_name = 'GITHUB-LENTIPACURAR-TOKEN'
 secret = client.get_secret(secret_name)
 GITHUB_TOKEN = secret.value
-print(f"step 3: {GITHUB_TOKEN}")
+secret_name = 'ANAF-OPEN-API-KEY'
+secret = client.get_secret(secret_name)
+ANAF_OPEN_API_KEY = secret.value
 secret_azure_name = 'SIVENTYS-DOCUINTEL-AZURE-KEY'
 secret_azure = client.get_secret(secret_azure_name)
 AZURE_KEY = secret_azure.value
@@ -162,7 +164,7 @@ def process_cui():
         
         # Call the external API with the CUI (replace with the actual API URL)
         api_url = f"https://api.openapi.ro/v1/companies/{cui}"
-        headers = {'x-api-key': 'G9GwyMnv2Z5b2KL9xEyDCaYRzW9z5qAvZbkE3HEKY1gg9s53kQ'}
+        headers = {'x-api-key': ANAF_OPEN_API_KEY}
         response = requests.get(api_url, headers=headers)
         
         # Check if the response is successful

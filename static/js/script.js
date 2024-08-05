@@ -125,6 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('pob').value = data.pob || '';
         document.getElementById('doi').value = data.doi_content || '';
         document.getElementById('doe').value = data.doe_content || '';
+
+        document.getElementById('lbl-name').innerText  = 'Nume';
+        document.getElementById('lbl-surname').innerText = 'Prenume';
+        document.getElementById('lbl-personal-id').innerText = 'CNP';
+        document.getElementById('lbl-document-id').innerText = 'Serie si nr. document';
+        document.getElementById('lbl-dob').innerText = 'Data nasterii';
+        document.getElementById('lbl-pob').innerText = 'Locul nasterii';
+        document.getElementById('lbl-doi').innerText = 'Data eliberare carte de identitate';
+        document.getElementById('lbl-doe').innerText = 'Data expirare carte de identitate';
     }
 
     extractedData.addEventListener('submit', function(event) {
@@ -184,13 +193,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function fillDataFormCUI(data) {
         document.getElementById('name').value = data.denumire || '';
+        document.getElementById('lbl-name').innerText  = 'Denumire';
         document.getElementById('surname').value = data.cod_postal || '';
+        document.getElementById('lbl-surname').innerText = 'Cod postal';
         document.getElementById('address').value = data.adresa || '';
         document.getElementById('personal-id').value = data.cif || '';
+        document.getElementById('lbl-personal-id').innerText = 'CUI';
         document.getElementById('document-id').value = data.numar_reg_com || '';
+        document.getElementById('lbl-document-id').innerText = 'Nr. Reg. Comertului';
         document.getElementById('dob').value = data.stare || '';
+        document.getElementById('lbl-dob').innerText = 'Stare';
         document.getElementById('pob').value = data.judet || '';
+        document.getElementById('lbl-pob').innerText = 'Judetul';
         document.getElementById('doi').value = data.ultima_declaratie || '';
         document.getElementById('doe').value = data.ultima_prelucrare || '';
+        document.getElementById('lbl-doi').innerText = 'Ultima declaratie';
+        document.getElementById('lbl-doe').innerText = 'Ultima prelucrare';
     }
 });

@@ -44,10 +44,28 @@ input[type="text"], textarea[type="text"], input[type="file"] {
 }
 
 .custom-select {
-    width: 100%; /* Adjust the width to match your requirements */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     padding: 10px;
-    margin: 5px 0;
+    font-size: 16px;
+    width: 100%;
     box-sizing: border-box;
+    /* background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMCAxIj4KICA8cGF0aCBkPSJNNSA4LjI1Yy0uMjUuMjUtLjY1LjI1LS45IDBsLTQtNEEuNjQuNjQgMCAwIDEgMS4xMiAxLjIuNjQuNjQgMCAwIDEgMS4xMiAwTDUgMy43NWwzLjg4LTMuNzVhLjY0LjY0IDAgMCAxIC45MCAwbDQgNEEuNjQuNjQgMCAwIDEgOS4wOCA4LjI1YS42NC42NCAwIDAgMS0uOTAgMEw1IDguMjV6Ii8+Cjwvc3ZnPgo='); */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.custom-select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.custom-select::-ms-expand {
+    display: none;
 }
 
 .btn {
