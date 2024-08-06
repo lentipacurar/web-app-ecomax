@@ -196,8 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function fillDataFormCUI(data) {
         document.getElementById('name').value = data.denumire || '';
         document.getElementById('lbl-name').innerText  = 'Denumire';
-        document.getElementById('surname').value = ' ';
-        document.getElementById('lbl-surname').innerText = ' ';
+        document.getElementById('surname').value = 'Radiata';
+        document.getElementById('lbl-surname').innerText = (data.radiata === 'true') ? 'Da - Radiata' :  ' ';
         document.getElementById('address').value = data.adresa + ', ' + data.cod_postal || '';
         document.getElementById('personal-id').value = data.cif || '';
         document.getElementById('lbl-personal-id').innerText = 'CUI';
